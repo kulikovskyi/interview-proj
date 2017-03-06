@@ -1,0 +1,63 @@
+body {
+    background: white;
+}
+
+.create-page {
+    .image-view {
+        margin-top: 25px;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        background: 50% no-repeat #f4f4f4;
+        background-size: cover;
+        cursor: pointer;
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+
+            img {
+                height: auto;
+                max-height: 500px;
+                max-width: 100%;
+            }
+
+            .tooltip-point {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                font-size: 2em;
+
+                &.active {
+                    color: red;
+                }
+            }
+        }
+    }
+
+    .save-wrapper,
+    .manage-tooltip-container,
+    .image-chooser-container,
+    .add-tooltip-container {
+        margin-top: 15px;
+    }
+
+    .button-wrapper {
+        margin-top: 10px;
+    }
+}
+
+.home-page {
+    .create-container {
+        margin-top: 15px;
+    }
+
+    .compositions-container {
+        .composition-view {
+            margin-top: 15px;
+
+            img {
+                max-height: 100px;
+            }
+        }
+    }
+}
