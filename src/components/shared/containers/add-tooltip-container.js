@@ -2,8 +2,6 @@ import React, {PropTypes, Component} from 'react';
 import {connect}                     from 'react-redux';
 import {Button}                      from 'react-bootstrap';
 
-import * as cpActions                from '../../../actions/create-actions';
-
 class AddTooltipContainer extends Component {
 
     render() {
@@ -25,16 +23,16 @@ class AddTooltipContainer extends Component {
     }
 
     handleChangeText = (e) => {
-        this.props.SET_TOOLTIP_TEXT(e.target.value);
+        this.props.dispatch(this.props.SET_TOOLTIP_TEXT(e.target.value));
     };
 
     handleClickAdd = () => {
-        this.props.ADD_TOOLTIP(this.props.newTooltipPosition, this.props.newTooltipText);
-        this.props.SET_TOOLTIP_TEXT('');
-        this.props.SET_TOOLTIP_POSITION({
+        this.props.dispatch(this.props.ADD_TOOLTIP(this.props.newTooltipPosition, this.props.newTooltipText));
+        this.props.dispatch(this.props.SET_TOOLTIP_TEXT(''));
+        this.props.dispatch(this.props.SET_TOOLTIP_POSITION({
             x: null,
             y: null
-        });
+        }));
     };
 }
 
@@ -46,16 +44,4 @@ AddTooltipContainer.propTypes = {
     ADD_TOOLTIP: PropTypes.func.isRequired,
 };
 
-const mapStateToPros = state => ({
-    newTooltipText: state.createPage.newTooltipText,
-    newTooltipPosition: state.createPage.newTooltipPosition,
-});
-
-const mapDispatchToProps = dispatch => ({
-    SET_TOOLTIP_TEXT: text => dispatch(cpActions.SET_TOOLTIP_TEXT(text)),
-    SET_TOOLTIP_POSITION: position => dispatch(cpActions.SET_TOOLTIP_POSITION(position)),
-    ADD_TOOLTIP: (position, text) => dispatch(cpActions.ADD_TOOLTIP(position, text)),
-    CLEAR: () => dispatch(cpActions.CLEAR())
-});
-
-export default connect(mapStateToPros, mapDispatchToProps)(AddTooltipContainer);
+export default connect()(AddTooltipContainer);

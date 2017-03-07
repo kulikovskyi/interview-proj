@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
-import TooltipsView from './tooltips-view';
-import PointerView from './pointer-view';
+import TooltipsView                  from './tooltips-view';
+import PointerView                   from './pointer-view';
 
 class ImageView extends Component {
 
@@ -29,8 +29,8 @@ class ImageView extends Component {
     }
 
     handleClickImage = (e) => {
-        const positionX = e.nativeEvent.clientX - e.target.x;
-        const positionY = e.nativeEvent.clientY - e.target.y;
+        const positionX = e.nativeEvent.pageX - e.target.x;
+        const positionY = e.nativeEvent.pageY - e.target.y;
         const positionPercentX = (positionX * 100) / e.target.width;
         const positionPercentY = (positionY * 100) / e.target.height;
 
@@ -46,12 +46,13 @@ ImageView.propTypes = {
     newTooltipPosition: PropTypes.object,
     isExpandTooltips: PropTypes.bool,
     url: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func
 };
 
 ImageView.defaultProps = {
     tooltips: [],
     isExpandTooltips: false,
+    newTooltipPosition: {x: null, y: null}
 };
 
 export default ImageView;

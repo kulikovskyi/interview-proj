@@ -2,8 +2,6 @@ import React, {PropTypes, Component} from 'react';
 import {connect}                     from 'react-redux';
 import {Button}                      from 'react-bootstrap';
 
-import * as cpActions from '../../../actions/create-actions';
-
 class ManageTooltipContainer extends Component {
 
     render() {
@@ -18,7 +16,9 @@ class ManageTooltipContainer extends Component {
                                 </div>
                                 <div className="col-xs-3 button-wrapper">
                                     <Button className="pull-right"
-                                            onClick={this.handleDeleteTooltip.bind(null, tooltip.id)}> Delete tooltip </Button>
+                                            onClick={this.handleDeleteTooltip.bind(null, tooltip.id)}>
+                                        Delete tooltip
+                                    </Button>
                                 </div>
                             </div>
                         );
@@ -29,8 +29,8 @@ class ManageTooltipContainer extends Component {
     }
 
     handleDeleteTooltip = (id) => {
-        this.props.DELETE_TOOLTIP(id);
-    }
+        this.props.dispatch(this.props.DELETE_TOOLTIP(id));
+    };
 }
 
 ManageTooltipContainer.propTypes = {
@@ -38,12 +38,4 @@ ManageTooltipContainer.propTypes = {
     DELETE_TOOLTIP: PropTypes.func.isRequired
 };
 
-const mapStateToPros = state => ({
-    tooltips: state.createPage.tooltips
-});
-
-const mapDispatchToProps = dispatch => ({
-    DELETE_TOOLTIP: id => dispatch(cpActions.DELETE_TOOLTIP(id))
-});
-
-export default connect(mapStateToPros, mapDispatchToProps)(ManageTooltipContainer);
+export default connect()(ManageTooltipContainer);

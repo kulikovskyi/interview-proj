@@ -7,7 +7,7 @@ import * as appActions               from '../../../actions/app-actions';
 
 import CompositionsContainer         from './compositions-container';
 
-class HomePage extends Component {
+export default class HomePage extends Component {
 
     render() {
         return (
@@ -31,18 +31,3 @@ class HomePage extends Component {
         browserHistory.push("/create");
     }
 }
-
-HomePage.propTypes = {
-    test: PropTypes.any,
-    CLEAR: PropTypes.func.isRequired
-};
-
-const mapStateToPros = state => ({
-    test: state.app.test
-});
-
-const mapDispatchToProps = dispatch => ({
-    CLEAR: () => dispatch(appActions.CLEAR())
-});
-
-export default connect(mapStateToPros, mapDispatchToProps)(HomePage);

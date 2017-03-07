@@ -61,3 +61,7 @@ body {
         }
     }
 }
+
+.preview-page {
+    @extend .create-page;
+}

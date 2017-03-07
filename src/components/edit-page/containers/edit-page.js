@@ -13,6 +13,13 @@ import ImageView                     from '../../shared/components/image-view';
 
 class CreatePage extends Component {
 
+    componentWillMount() {
+        const compositionId = this.props.routeParams.id;
+        const composition = _.find(this.props.compositions, {id: compositionId});
+        this.props.SET_IMAGE(composition.image);
+        this.props.SET_TOOLTIPS(composition.tooltips);
+    }
+
     componentWillUnmount() {
         this.props.CLEAR();
     }
@@ -47,7 +54,7 @@ class CreatePage extends Component {
                             DELETE_TOOLTIP={cpActions.DELETE_TOOLTIP}
                         />
                         <ButtonGroup className="save-wrapper" vertical block>
-                            <Button onClick={this.handleClickSave} bsStyle="primary"> Save </Button>
+                            <Button onClick={this.handleClickSave} bsStyle="primary"> Edit </Button>
                         </ButtonGroup>
                     </div>
                 </div>
@@ -60,7 +67,15 @@ class CreatePage extends Component {
     };
 
     handleClickSave = () => {
-        this.props.ADD_COMPOSITION(this.props.image, this.props.tooltips);
+        const compositionId = this.props.routeParams.id;
+        const composition = _.find(this.props.compositions, {id: compositionId});
+        const editedComposition = {
+            ...composition,
+            image: this.props.image,
+            tooltips: this.props.tooltips
+        };
+
+        this.props.EDIT_COMPOSITION(editedComposition);
         browserHistory.push("/home");
     };
 }
@@ -70,8 +85,11 @@ CreatePage.propTypes = {
     tooltips: PropTypes.array,
     newTooltipText: PropTypes.string,
     newTooltipPosition: PropTypes.object,
-    ADD_COMPOSITION: PropTypes.func.isRequired,
+    compositions: PropTypes.array.isRequired,
+    EDIT_COMPOSITION: PropTypes.func.isRequired,
     SET_TOOLTIP_POSITION: PropTypes.func.isRequired,
+    SET_IMAGE: PropTypes.func.isRequired,
+    SET_TOOLTIPS: PropTypes.func.isRequired,
     CLEAR: PropTypes.func.isRequired
 };
 
@@ -79,12 +97,15 @@ const mapStateToPros = state => ({
     image: state.createPage.image,
     tooltips: state.createPage.tooltips,
     newTooltipText: state.createPage.newTooltipText,
-    newTooltipPosition: state.createPage.newTooltipPosition
+    newTooltipPosition: state.createPage.newTooltipPosition,
+    compositions: state.app.compositions
 });
 
 const mapDispatchToProps = dispatch => ({
-    ADD_COMPOSITION: (image, tooltips) => dispatch(appActions.ADD_COMPOSITION(image, tooltips)),
+    EDIT_COMPOSITION: composition => dispatch(appActions.EDIT_COMPOSITION(composition)),
     SET_TOOLTIP_POSITION: position => dispatch(cpActions.SET_TOOLTIP_POSITION(position)),
+    SET_IMAGE: image => dispatch(cpActions.SET_IMAGE(image)),
+    SET_TOOLTIPS: tooltips => dispatch(cpActions.SET_TOOLTIPS(tooltips)),
     CLEAR: () => dispatch(cpActions.CLEAR())
 });
 

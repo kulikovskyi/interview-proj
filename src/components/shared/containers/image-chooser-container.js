@@ -1,9 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import {connect}                     from 'react-redux';
 
-import * as cpActions                from '../../../actions/create-actions';
-
-import FileChooser                   from '../../shared/components/file-chooser';
+import FileChooser                   from '../components/file-chooser';
 
 class ImageChooserContainer extends Component {
 
@@ -24,7 +22,7 @@ class ImageChooserContainer extends Component {
     }
 
     handleChooseImage = (image) => {
-        this.props.SET_IMAGE(image);
+        this.props.dispatch(this.props.SET_IMAGE(image));
     }
 }
 
@@ -32,8 +30,4 @@ ImageChooserContainer.propTypes = {
     SET_IMAGE: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-    SET_IMAGE: image => dispatch(cpActions.SET_IMAGE(image)),
-});
-
-export default connect(null, mapDispatchToProps)(ImageChooserContainer);
+export default connect()(ImageChooserContainer);

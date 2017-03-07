@@ -7,6 +7,13 @@ export function SET_IMAGE(image){
     }
 }
 
+export function SET_TOOLTIPS(tooltips){
+    return {
+        type: CPConstants.CP_SET_TOOLTIPS,
+        tooltips
+    }
+}
+
 export function SET_TOOLTIP_POSITION(position){
     return {
         type: CPConstants.CP_SET_TOOLTIP_POSITION,

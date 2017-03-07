@@ -14,6 +14,15 @@ export default function App(state = initSate, action) {
             return Object.assign({}, state, {
                 compositions: state.compositions.filter(t => t.id !== action.id)
             });
+        case AppConstants.APP_EDIT_COMPOSITION:
+            return Object.assign({}, state, {
+                compositions: state.compositions.map(t => {
+                    if (t.id === action.composition.id) {
+                        return action.composition;
+                    }
+                    return t;
+                })
+            });
         case AppConstants.APP_CLEAR:
             return initSate;
         default:

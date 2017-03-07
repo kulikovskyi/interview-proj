@@ -14,7 +14,8 @@ class CompositionsContainer extends Component {
                 <div className="col-xs-12 col-md-6 col-md-offset-3">
                     {this.props.compositions.map(composition => {
                         return (
-                            <CompositionView id={composition.id}
+                            <CompositionView key={composition.id}
+                                             id={composition.id}
                                              image={composition.image}
                                              onClickPreview={this.handleClickPreview}
                                              onClickEdit={this.handleClickEdit}

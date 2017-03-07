@@ -21,6 +21,13 @@ export function DELETE_COMPOSITION(id){
     }
 }
 
+export function EDIT_COMPOSITION(composition){
+    return {
+        type: appConstants.APP_EDIT_COMPOSITION,
+        composition
+    }
+}
+
 export function CLEAR(){
     return {
         type: appConstants.APP_CLEAR

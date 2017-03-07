@@ -16,6 +16,10 @@ export default function (state = initSate, action) {
             return Object.assign({}, state, {
                 image: action.image
             });
+        case CPConstants.CP_SET_TOOLTIPS:
+            return Object.assign({}, state, {
+                tooltips: action.tooltips
+            });
         case CPConstants.CP_SET_TOOLTIP_POSITION:
             return Object.assign({}, state, {
                 newTooltipPosition: action.position
