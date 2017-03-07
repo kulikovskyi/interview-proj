@@ -29,6 +29,7 @@ class FileChooser extends Component {
         if (file && file.type.startsWith('image')) {
             reader.addEventListener("load", () => {
                 if (file.type.startsWith('image')) {
+                    console.log("reader.result", reader.result);
                     this.props.onChooseImage(reader.result);
                 }
             }, false);

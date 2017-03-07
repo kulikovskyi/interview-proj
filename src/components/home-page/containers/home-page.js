@@ -1,10 +1,19 @@
 import React, {PropTypes, Component} from 'react';
+import {connect}                     from 'react-redux';
 import {browserHistory}              from 'react-router';
 import {ButtonGroup, Button}         from 'react-bootstrap';
 
+import * as appActions               from '../../../actions/app-actions';
+
 import CompositionsContainer         from './compositions-container';
 
-export default class HomePage extends Component {
+import compositions                  from "../../../sources/compositions.json";
+
+class HomePage extends Component {
+
+    componentWillMount() {
+        if (!this.props.compositions.length) this.props.SET_COMPOSITIONS(compositions);
+    }
 
     render() {
         return (
@@ -28,3 +37,18 @@ export default class HomePage extends Component {
         browserHistory.push("/create");
     }
 }
+
+HomePage.propTypes = {
+    compositions: PropTypes.array.isRequired,
+    SET_COMPOSITIONS: PropTypes.func.isRequired
+};
+
+const mapStateToPros = state => ({
+    compositions: state.app.compositions
+});
+
+const mapDispatchToProps = dispatch => ({
+    SET_COMPOSITIONS: compositions => dispatch(appActions.SET_COMPOSITIONS(compositions)),
+});
+
+export default connect(mapStateToPros, mapDispatchToProps)(HomePage);

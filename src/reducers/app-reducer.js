@@ -6,6 +6,10 @@ const initSate = {
 
 export default function App(state = initSate, action) {
     switch (action.type) {
+        case AppConstants.APP_SET_COMPOSITIONS:
+            return Object.assign({}, state, {
+                compositions: action.compositions
+            });
         case AppConstants.APP_ADD_COMPOSITION:
             return Object.assign({}, state, {
                 compositions: [...state.compositions, action.composition]

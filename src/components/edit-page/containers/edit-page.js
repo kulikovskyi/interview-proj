@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import {connect}                     from 'react-redux';
-import {ButtonGroup, Button}                      from 'react-bootstrap';
+import {ButtonGroup, Button}         from 'react-bootstrap';
 import {browserHistory}              from 'react-router';
 
 import * as cpActions                from '../../../actions/create-actions';

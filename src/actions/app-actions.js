@@ -1,5 +1,12 @@
 import * as appConstants from '../constants/app';
 
+export function SET_COMPOSITIONS(compositions){
+    return {
+        type: appConstants.APP_SET_COMPOSITIONS,
+        compositions
+    }
+}
+
 export function ADD_COMPOSITION(image, tooltips){
 
     const composition = {
