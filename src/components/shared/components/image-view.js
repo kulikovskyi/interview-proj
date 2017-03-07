@@ -6,16 +6,24 @@ import PointerView                   from './pointer-view';
 class ImageView extends Component {
 
     render() {
-        const {x, y} = this.props.newTooltipPosition;
+        const {editTooltip, tooltips, isExpandTooltips, url} = this.props;
+        let {x, y} = this.props.newTooltipPosition;
+        let resultTooltips = tooltips;
+
+        if (editTooltip) {
+            resultTooltips = tooltips.filter(t => t.id !== editTooltip.id)
+            x = editTooltip.position.x;
+            y = editTooltip.position.y;
+        }
 
         return (
             <div className="image-view row">
                 <div className="col-xs-12">
                     <div className="image-wrapper">
-                        <img src={this.props.url}
+                        <img src={url}
                              onClick={this.handleClickImage}
                         />
-                        <TooltipsView tooltips={this.props.tooltips} isExpandTooltips={this.props.isExpandTooltips}/>
+                        <TooltipsView tooltips={resultTooltips} isExpandTooltips={isExpandTooltips}/>
                         { x && y ?
                             <PointerView x={x}
                                          y={y}
@@ -43,6 +51,7 @@ class ImageView extends Component {
 
 ImageView.propTypes = {
     tooltips: PropTypes.array,
+    editTooltip: PropTypes.object,
     newTooltipPosition: PropTypes.object,
     isExpandTooltips: PropTypes.bool,
     url: PropTypes.string.isRequired,

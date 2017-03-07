@@ -39,7 +39,6 @@ body {
     }
 
     .save-wrapper,
-    .manage-tooltip-container,
     .image-chooser-container,
     .add-tooltip-container {
         margin-top: 15px;
@@ -47,6 +46,20 @@ body {
 
     .button-wrapper {
         margin-top: 10px;
+    }
+
+    .manage-tooltip-container {
+        margin-top: 15px;
+
+        .tooltip-edit-view {
+            .text input {
+                margin-top: 2px;
+            }
+        }
+
+        .button-wrapper button{
+            margin-left: 3px;
+        }
     }
 }
 

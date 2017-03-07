@@ -7,7 +7,8 @@ const initSate = {
         y: null
     },
     newTooltipText: '',
-    tooltips: []
+    tooltips: [],
+    editTooltip: null
 };
 
 export default function (state = initSate, action) {
@@ -35,6 +36,36 @@ export default function (state = initSate, action) {
         case CPConstants.CP_DELETE_TOOLTIP:
             return Object.assign({}, state, {
                 tooltips: state.tooltips.filter(t => t.id !== action.id)
+            });
+        case CPConstants.CP_SET_EDIT_TOOLTIP:
+            return Object.assign({}, state, {
+                editTooltip: _.find(state.tooltips, {id: action.id})
+            });
+        case CPConstants.CP_SET_EDIT_TOOLTIP_TEXT:
+            return Object.assign({}, state, {
+                editTooltip: Object.assign({}, state.editTooltip, {
+                    text: action.text
+                })
+            });
+        case CPConstants.CP_SET_EDIT_TOOLTIP_POSITION:
+            return Object.assign({}, state, {
+                editTooltip: Object.assign({}, state.editTooltip, {
+                    position: action.position
+                })
+            });
+        case CPConstants.CP_SAVE_EDIT_TOOLTIP:
+            return Object.assign({}, state, {
+                tooltips: state.tooltips.map(t => {
+                    if (t.id === state.editTooltip.id) {
+                        return state.editTooltip;
+                    }
+                    return t;
+                }),
+                editTooltip: null
+            });
+        case CPConstants.CP_DISCARD_EDIT_TOOLTIP:
+            return Object.assign({}, state, {
+                editTooltip: null
             });
         case CPConstants.CP_CLEAR:
             return initSate;
