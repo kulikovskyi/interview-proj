@@ -11,10 +11,10 @@ class ManageTooltipContainer extends Component {
                     {this.props.tooltips.map(tooltip => {
                         return (
                             <div key={tooltip.id} className="row">
-                                <div className="col-xs-9">
+                                <div className="col-xs-8 text">
                                     {tooltip.text}
                                 </div>
-                                <div className="col-xs-3 button-wrapper">
+                                <div className="col-xs-4 button-wrapper">
                                     <Button className="pull-right"
                                             onClick={this.handleDeleteTooltip.bind(null, tooltip.id)}>
                                         Delete tooltip

@@ -16,11 +16,15 @@ class PreviewPage extends Component {
         return (
             <div className="container preview-page">
                 <div className="row">
-                    <div className="col-xs-12 col-md-6 col-md-offset-3">
+                    <div className="col-xs-12">
                         <ImageView
                             url={image}
                             tooltips={tooltips}
                         />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-xs-12 col-md-6 col-md-offset-3 button-wrapper">
                         <ButtonGroup vertical block>
                             <Button onClick={this.handleClickBack}>
                                 Back

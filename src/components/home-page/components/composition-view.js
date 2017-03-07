@@ -8,7 +8,7 @@ function CompositionView(props) {
                 <img className="img-rounded" src={props.image}/>
             </div>
             <div className="col-xs-6">
-                <ButtonToolbar>
+                <ButtonToolbar className="pull-right">
                     <Button onClick={props.onClickPreview.bind(null, props.id)}>Preview</Button>
                     <Button onClick={props.onClickEdit.bind(null, props.id)}>Edit</Button>
                     <Button bsStyle="danger" onClick={props.onClickDelete.bind(null, props.id)}>Delete</Button>

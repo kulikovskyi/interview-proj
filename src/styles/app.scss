@@ -8,7 +8,7 @@ body {
         height: 100%;
         width: 100%;
         text-align: center;
-        background: 50% no-repeat #f4f4f4;
+        background: 50% no-repeat;
         background-size: cover;
         cursor: pointer;
 
@@ -64,4 +64,43 @@ body {
 
 .preview-page {
     @extend .create-page;
+}
+
+.image-chooser-container {
+    .upload {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+
+        #upload-file {
+            display: none;
+        }
+
+        .glyphicon {
+            font-size: 7em;
+            color: grey;
+            cursor: pointer;
+
+            &:hover {
+                color: #6e6e6e;
+            }
+        }
+    }
+}
+
+.manage-tooltip-container {
+    .row {
+        &:nth-child(odd) {
+            background: #f0f0f0;
+        }
+
+        .text {
+            line-height: 40px;
+        }
+
+        .button-wrapper {
+            margin-top: 3px;
+        }
+    }
 }

@@ -54,7 +54,7 @@ class CreatePage extends Component {
                             DELETE_TOOLTIP={cpActions.DELETE_TOOLTIP}
                         />
                         <ButtonGroup className="save-wrapper" vertical block>
-                            <Button onClick={this.handleClickSave} bsStyle="primary"> Edit </Button>
+                            <Button onClick={this.handleClickSave} bsStyle="primary"> Save </Button>
                         </ButtonGroup>
                     </div>
                 </div>

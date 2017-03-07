@@ -9,8 +9,8 @@ class ImageChooserContainer extends Component {
         return (
             <div className="row image-chooser-container">
                 <div className="col-xs-12">
-                    <label htmlFor="upload-file" className="item __upload">
-                        Choose image
+                    <label htmlFor="upload-file" className="item upload">
+                        <span className="glyphicon glyphicon-upload" />
                         <FileChooser
                             isHidden={true}
                             onChooseImage={this.handleChooseImage}
@@ -27,7 +27,7 @@ class ImageChooserContainer extends Component {
 }
 
 ImageChooserContainer.propTypes = {
-    SET_IMAGE: PropTypes.func.isRequired,
+    SET_IMAGE: PropTypes.func.isRequired
 };
 
 export default connect()(ImageChooserContainer);
